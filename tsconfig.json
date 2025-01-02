@@ -6,7 +6,9 @@
     "allowJs": true,
     "removeComments": true,
     "noImplicitReturns": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "rootDir": "src"
+
   },
   "include": ["src"],
   "exclude": ["node_modules"]
