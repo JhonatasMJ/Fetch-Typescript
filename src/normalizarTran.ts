@@ -1,3 +1,5 @@
+import moedaNumero from "./moedaNumero.js";
+import stringToDate from "./stringData.js";
 
 type TransacaoPagamento = 'Cartão de Crédito' | 'Boleto';
 type TransacaoStatus = "Paga" | "Recusada pela opreadora de cartão" | "Aguardando pagamento" | "Estornada";
@@ -32,11 +34,11 @@ export default function normalizarTransacao(transacao: TransacaoAPI) {
     return {
         nome: transacao.Nome,
         id: transacao.ID,
-        data: transacao.Data,
+        data: stringToDate(transacao.Data),
         status: transacao.Status,
         email: transacao.Status,
         moeda: transacao["Valor (R$)"],
-        valor: 0,
+        valor: moedaNumero(transacao["Valor (R$)"]),
         pagamento: transacao["Forma de Pagamento"],
         novo: Boolean(transacao["Cliente Novo"]),
     }
